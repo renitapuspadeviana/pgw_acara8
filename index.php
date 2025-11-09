@@ -30,21 +30,21 @@
             die("Koneksi gagal: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM data_kecamatan";
+        $sql = "SELECT * FROM data_kecamatan";//Menyimpan string query SQL
         $result = $conn->query($sql); //menyimpan hasil query ke variabel result
 
         echo "<a href='input/index.html'>Input</a>";
 
         if ($result->num_rows > 0) {
             echo "<table border='1'>
-                    <tr>
                         <th>ID</th>
                         <th>Nama Kecamatan</th>
                         <th>Longitude</th> 
                         <th>Latitude</th> 
                         <th>Luas</th>
                         <th>Jumlah Penduduk</th>
-                    </tr>";
+                        <th colspan='2'>Aksi</th>";
+                    
             
             //output data dari setiap baris
             while ($row = $result->fetch_assoc()) {
@@ -54,7 +54,9 @@
                         <td>" . $row["longitude"] . "</td>
                         <td>" . $row["latitude"] . "</td>
                         <td>" . $row["luas"] . "</td>
-                        <td>" . $row["jumlah_penduduk"] . "</td>
+                        <td align='right'>".$row["jumlah_penduduk"]."</td>
+                        <td><a href=delete.php?id=".$row["id"].">hapus</a></td>
+                        <td><a href=edit/index.php?id=".$row["id"].">edit</a></td>
                     </tr>";
             }
             echo "</table>";

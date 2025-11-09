@@ -11,7 +11,7 @@
     $username = "root";
     $password = "";
     $dbname = "latihan_8fiks";
-
+    
     //membuat koneksi
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -34,6 +34,8 @@
     //menutup koneksi
     $conn->close();
 
-    //mengalihkan kembali ke halaman index.php dengan pesan
-    header("Location: ../index.php?message=" . urlencode($message));
+    //mengalihkan kembali ke halaman leafletJS.php
+    header("Location: ../Edit/leafletJS.php");
+
+    exit;
 ?>
